@@ -1,0 +1,20 @@
+{
+  "name": "ucum-loinc-validator",
+  "version": "0.0.0",
+  "description": "Checks whether UCUM code is appropriate for a given LOINC code.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@git-scm.nlm.nih.gov:7999/lfor/ucum-loinc-validator.git"
+  },
+  "keywords": [
+    "UCUM",
+    "LOINC",
+    "Validation"
+  ],
+  "author": "U.S. National Library of Medicine",
+  "license": "SEE LICENSE IN LICENSE.MD."
+}
