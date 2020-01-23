@@ -25,7 +25,14 @@ To use the script:
 - install Node js on your system
 - install this package
 
-node bin/validateLoincUcumCSV.js -i <input-csv-file> -l <loinc-column-name> -u <unit-column-name> [-o <output-file>]
+Then
+
+    node bin/validateLoincUcumCSV.js -i <input-csv-file> -l <loinc-column-name> -u <unit-column-name> [-o <output-file>]
+
+For example, to validate the sample test file that comes with this package:
+
+     node bin/validateLoincUcumCSV.js -i data/sample-test-file.csv -l loinc -u unit
+
 
 The output is optional, default to standard output (terminal)   
 

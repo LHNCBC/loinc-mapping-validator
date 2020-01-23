@@ -1,0 +1,10 @@
+loinc,unit,status,whatever
+18833-4,kg,VALID,"something, who cares"
+83167-7,kg,VALID,abcd
+83167-7,[ft_i],INVALID,dddd
+83167-7,kggk,INVALID,kkkk
+99967-7,kg,UNKNOWN,
+64015-1,/week,VALID,
+83164-4,ft,INVALID,
+,ft,missing loinc,
+83164-4,,missing unit,
