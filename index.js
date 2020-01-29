@@ -1,5 +1,5 @@
 
 module.exports = {
-  validator: require('source/loincUnitValidator')
-}
+  validator: require('./source/loincMappingValidator')
+};
 
