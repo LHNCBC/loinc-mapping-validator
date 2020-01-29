@@ -8,11 +8,33 @@ might be expanded to consider the values and potentially other factors as well.
 At the core of this package is the LOINC mapping library. To use the library:
 
 const validator = require('@lhncbc/loinc-mapping-validator');
-The validator exposes 2 elements:
-- validator.validate() is the function that you can call to validate a given 
-  (unit, LOINC number) to see if they go together.
-- validator.ValidationStatus defines the set of validation result status tokens. See
-  the section "Output File" below for more details.
+The validator exposes the following elements:
+- validator.validateLoincUnit() is the function that you can call to validate a given 
+  (unit, LOINC number) to see if they go together.  
+  Input parameters - validator.validateLoincUnit(loinc, unit):
+    - loinc: the LOINC number whose mapping is to be checked
+    - unit: the unit string that is used to validate the LOINC mapping.   
+  Output: an object with the following fields:
+      - loinc: the same as the input loinc
+      - unit: the same as the input unit
+      - unitStatus: unit validation status code, see UnitVldStatus below for more details
+      - loincStatus: LOINC mapping validation status code, see LoincVldStatus below for more details
+      - substituted_unit: a ucum unit that the given unit can be mapped to (when it's non-ucum unit)  
+- validator.UnitVldStatus specifies the set of status codes of unit validation results -
+  see UnitVldStatusNote below for more details.
+- validator.UnitVldStatusNote describes the status codes in UnitVldStatus:
+    - VALID: The unit is a valid UCUM unit
+    - INVALID_FIXED: The unit is not a UCUM unit but there is a known mapping 
+      to a UCUM unit as provided under LMV_SUBSTITUTED_UNIT,
+    - INVALID_UNKNOWN: The unit is not a UCUM unit and there is no known mapping to a UCUM unit
+    - MISSING_UNIT: The unit is not provided as input
+- validator.LoincVldStatus specifies the set of status codes of LOINC mapping validation 
+  results. See LoincVldStatusNote below for more details.
+- validator.LoincVldStatusNote describes the status codes in LoincVldStatus:
+    - CORRECT: The LOINC mapping matches with the unit
+    - INCORRECT: The LOINC mapping does not match with the unit
+    - UNKNOWN: Unit information not available for the LOINC number
+    - MISSING_LOINC: The LOINC number is not provided
 
 ##### The Command-line Tool
 There is a command line tool that comes with this package, which you can use to
@@ -20,12 +42,12 @@ batch validate records in a CSV input file, and output a new CSV file that conta
 all the input columns plus a few new columns that indicate the validation status
 for each record.
 
-To use the command line too, you will need to work with Windows command terminals or
+To use the command line tool, you will need to work with Windows command terminals or
 Linux terminals.
-- Install Node js on your system
+- Install Node.js on your system
 - Download this package
 
-To valid the test file that comes with this package:
+To validate the test file that comes with this package:
 
     cd into the directory where you saved this package
     node bin/validateLoincUnitCSV.js -i data/sample-test-file.csv -l LOINC -u UNIT
@@ -46,15 +68,17 @@ Where:
 - \<unit-column-name\>
     - The name of the column that has the unit
 - \<output-file\>
-   - This parameter is optional, if not specified, will print you standard output (terminal)
+   - This parameter is optional, and if not specified, will print to the standard output (terminal)
    - A CSV file with all the columns in the input file
    - 5 new columns for the validation results:
-      - LMV_UNIT_STATUS: the status of the unit, possible values are:  
-        VALID, INVALID, and UNKNOWN
-      - LMV_LOINC_STATUS: the status of the LOINC mapping, possible values are:  
-        VALID, INVALID, and UNKNOWN
+      - LMV_UNIT_STATUS: the validation status of the unit See the descriptions on 
+        UnitVldStatusNote above for more details
+      - LMV_LOINC_STATUS: the validation status of the LOINC mapping. See the descriptions  
+        on LoincVldStatusNote above for more details.
       - LMV_SUBSTITUTED_UNIT: if the given unit is not a UCUM unit and there is a known mapping 
         to a UCUM unit, it will be suggested here.
-      - LMV_UNIT_NOTE: a note explaining the LMV_UNIT_STATUS
-      - LMV_LOINC_NOTE: a note explaining the LMV_LOINC_STATUS 
+      - LMV_UNIT_NOTE: a note explaining the LMV_UNIT_STATUS. See the descriptions on
+        UnitVldStatusNote above for more details
+      - LMV_LOINC_NOTE: a note explaining the LMV_LOINC_STATUS. See the descriptions on
+        LoincVldStatusNote above for more details 
     

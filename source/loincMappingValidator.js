@@ -31,12 +31,12 @@ const LoincVldStatus = Object.keys(LoincVldStatusNote).reduce(
  * Valid if the given unit is a ucum unit and is compatible with the given LOINC.
  * @param loinc the loinc number for the check
  * @param unit the unit for the check
- * @return an object with the following fields: loinc, unit, unitStatus, suggested_unit,
+ * @return an object with the following fields: loinc, unit, unitStatus, substituted_unit,
  *         and loincStatus, where:
  *         loinc and unit: the same as the input loinc and unit
  *         unitStatus: see UnitVldStatusNote for more details
  *         loincStatus: see LoincVldStatusNote for more details
- *         suggested_unit: a ucum unit that the given unit can be mapped to (when it's non-ucum unit)
+ *         substituted_unit: a ucum unit that the given unit can be mapped to (when it's non-ucum unit)
  */
 function validateLoincUnit(loinc, unit) {
   var result = {unit, loinc};
