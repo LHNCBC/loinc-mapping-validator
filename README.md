@@ -10,7 +10,7 @@ At the core of this package is the LOINC mapping library. To use the library:
 const validator = require('@lhncbc/loinc-mapping-validator');
 The validator exposes the following elements:
 - validator.validateLoincUnit() is the function that you can call to validate a given 
-  (unit, LOINC number) to see if they go together.  
+  (LOINC number, unit) to see if they go together.  
   Input parameters - validator.validateLoincUnit(loinc, unit):
     - loinc: the LOINC number whose mapping is to be checked
     - unit: the unit string that is used to validate the LOINC mapping.   
