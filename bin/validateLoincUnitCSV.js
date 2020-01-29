@@ -8,11 +8,11 @@
 
 // This generates a hash that is the column name mapped to itself
 let newCols = [
-  'LMV_UNIT_STATUS_',   // unit validation status, see UnitVldStatusNote for more details
-  'LMV_UNIT_NOTE_',     // unit validation note, see UnitVldStatusNote for more details
-  'LMV_LOINC_STATUS_',  // LOINC mapping validation status, see LoincVldStatusNote for more details
-  'LMV_LOINC_NOTE_',    // LOINC mapping validation note, see LoincVldStatusNote for more details
-  'LMV_SUGGEST_UNIT_',  // if the input unit is not a valid UCUM unit but has a known mapping to a
+  'LMV_UNIT_STATUS',   // unit validation status, see UnitVldStatusNote for more details
+  'LMV_UNIT_NOTE',     // unit validation note, see UnitVldStatusNote for more details
+  'LMV_LOINC_STATUS',  // LOINC mapping validation status, see LoincVldStatusNote for more details
+  'LMV_LOINC_NOTE',    // LOINC mapping validation note, see LoincVldStatusNote for more details
+  'LMV_SUBSTITUTED_UNIT',  // if the input unit is not a valid UCUM unit but has a known mapping to a
                         // ucum unit that is compatible/valid to go with the input LOINC, then this column
                         // has that ucum unit
 ].reduce((acc, status)=>{acc[status] = status; return acc;}, {});
@@ -20,8 +20,6 @@ let newCols = [
 const fs = require('fs');
 const csv = require('csv');
 const validator = require('../source/loincMappingValidator');
-const UnitStatus = validator.UnitVldStatus;
-const LoincStatus = validator.LoincVldStatus;
 
 if(require.main === module) {
   let cmdLineOpts = require('commander');
@@ -80,20 +78,20 @@ function validateRecord(record, loincCol, unitCol) {
   }
   if(record[loincCol] && record[unitCol]) {
     let result = validator.validateLoincUnit(record[loincCol], record[unitCol]);
-    record.LMV_UNIT_STATUS_ = result.unitStatus;
-    record.LMV_SUGGEST_UNIT_ = result.suggested_unit;
-    record.LMV_LOINC_STATUS_ = result.loincStatus;
-    record.LMV_UNIT_NOTE_ = validator.UnitVldStatusNote[record.LMV_UNIT_STATUS_];
-    if(record.LMV_LOINC_STATUS_) { // can be empty if the unit is invalid
-      record.LMV_LOINC_NOTE_ = validator.LoincVldStatusNote[record.LMV_LOINC_STATUS_];
+    record.LMV_UNIT_STATUS = result.unitStatus;
+    record.LMV_SUBSTITUTED_UNIT = result.substituted_unit;
+    record.LMV_LOINC_STATUS = result.loincStatus;
+    record.LMV_UNIT_NOTE = validator.UnitVldStatusNote[record.LMV_UNIT_STATUS];
+    if(record.LMV_LOINC_STATUS) { // can be empty if the unit is invalid
+      record.LMV_LOINC_NOTE = validator.LoincVldStatusNote[record.LMV_LOINC_STATUS];
     }
   }
   else { // missing unit or loinc, add empty value to the new columns
     if (! record[unitCol]) {
-      record.LMV_UNIT_STATUS_ = validator.UnitVldStatus.MISSING_UNIT;
+      record.LMV_UNIT_STATUS = validator.UnitVldStatus.MISSING_UNIT;
     }
     if (! record[loincCol]) {
-      record.LMV_LOINC_STATUS_ = validator.LoincVldStatus.MISSING_LOINC;
+      record.LMV_LOINC_STATUS = validator.LoincVldStatus.MISSING_LOINC;
     }
     Object.keys(newCols).forEach(key => {record[key] = record[key] || ''});
   }

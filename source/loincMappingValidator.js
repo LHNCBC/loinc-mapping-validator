@@ -4,12 +4,12 @@
 const ucum = require('@lhncbc/ucum-lhc');
 const utils = ucum.UcumLhcUtils.getInstance();
 
-const loinc2Units = require('../data/loinc_unit.json'); // these are ucum units
-const units2UcumUnits = require('../data/unit_to_ucum_mapping.json');
+const _loinc2Units = require('../data/loinc_unit.json'); // these are ucum units
+const _units2UcumUnits = require('../data/unit_to_ucum_mapping.json');
 
 const UnitVldStatusNote = {
   VALID: 'The unit is a valid UCUM unit.',
-  INVALID_FIXED: 'The unit is not a UCUM unit but there is a known mapping to a UCUM unit as provided under _LMV_SUGGEST_UNIT_',
+  INVALID_FIXED: 'The unit is not a UCUM unit but there is a known mapping to a UCUM unit as provided under LMV_SUBSTITUTED_UNIT',
   INVALID_UNKNOWN: 'The unit is not a UCUM unit and there is no known mapping to a UCUM unit',
   MISSING_UNIT: 'The unit is not provided'
 };
@@ -20,7 +20,7 @@ const UnitVldStatus = Object.keys(UnitVldStatusNote).reduce(
 const LoincVldStatusNote = {
   CORRECT: 'The LOINC mapping matches with the unit',
   INCORRECT: 'The LOINC mapping does not match with the unit',
-  INCORRECT_UNKNOWN: 'Unit information not available for the LOINC number',
+  UNKNOWN: 'Unit information not available for the LOINC number',
   MISSING_LOINC: 'The LOINC number is not provided'
 };
 const LoincVldStatus = Object.keys(LoincVldStatusNote).reduce(
@@ -47,10 +47,10 @@ function validateLoincUnit(loinc, unit) {
     result.unitStatus = UnitVldStatus.VALID;
   }
   else {
-    unit = units2UcumUnits[unit];
+    unit = _units2UcumUnits[unit];
     if(unit) {
       result.unitStatus = UnitVldStatus.INVALID_FIXED;
-      result.suggested_unit = unit;
+      result.substituted_unit = unit;
     }
     else {
       result.unitStatus = UnitVldStatus.INVALID_UNKNOWN;
@@ -62,9 +62,9 @@ function validateLoincUnit(loinc, unit) {
     result.loincStatus = ''; // leave blank, can't say anything about LOINC if don't know the unit.
   }
   else {
-    var units4Loinc = loinc2Units[loinc];
+    var units4Loinc = _loinc2Units[loinc];
     if(! units4Loinc) { // no UCUM units are specified for the given loinc# in the LOINC table
-      result.loincStatus = LoincVldStatus.INCORRECT_UNKNOWN;
+      result.loincStatus = LoincVldStatus.UNKNOWN;
     }
     else {
       if (isUnitCompatible(unit, units4Loinc)) {
@@ -74,12 +74,6 @@ function validateLoincUnit(loinc, unit) {
         result.loincStatus = LoincVldStatus.INCORRECT;
       }
     }
-  }
-
-  // The mapped unit fix is meaningless if the assigned LOINC mapping is incorrect,
-  // especially if the long term goal of the library is for checking LOINC mapping.
-  if(result.loincStatus !== LoincVldStatus.CORRECT && result.suggested_unit) {
-    delete result.suggested_unit;
   }
 
   return result;

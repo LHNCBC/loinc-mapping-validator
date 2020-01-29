@@ -22,7 +22,7 @@ var testData = [
     unitStatus: UnitStatus.INVALID_UNKNOWN, loincStatus: ''
   },
   { loinc: '99967-7', unit: 'kg',     // No unit info about the LOINC
-    unitStatus: UnitStatus.VALID, loincStatus: LoincStatus.INCORRECT_UNKNOWN
+    unitStatus: UnitStatus.VALID, loincStatus: LoincStatus.UNKNOWN
   },
   { loinc: '64015-1', unit: '/week',  // 64015-1 has unit /wk, we have mapping /week to /wk
     unitStatus: UnitStatus.INVALID_FIXED, loincStatus: LoincStatus.CORRECT},
