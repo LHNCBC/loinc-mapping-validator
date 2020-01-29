@@ -1,10 +1,10 @@
 {
   "name": "ucum-loinc-validator",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Checks whether UCUM code is appropriate for a given LOINC code.",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,17 @@
     "Validation"
   ],
   "author": "U.S. National Library of Medicine",
-  "license": "SEE LICENSE IN LICENSE.MD."
+  "license": "SEE LICENSE IN LICENSE.MD.",
+  "dependencies": {
+    "@lhncbc/ucum-lhc": "^3.0.0",
+    "commander": "^4.1.0",
+    "csv": "^5.3.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-mocha-test": "^0.13.3",
+    "jit-grunt": "^0.10.0",
+    "mocha": "^7.0.0",
+    "mocha-test": "^2.0.4"
+  }
 }
