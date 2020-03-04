@@ -4,10 +4,10 @@ This validator is designed to check whether the LOINC mapping for the records
 are correct. Currently it only considers the unit of a record but down the road this
 might be expanded to consider the values and potentially other factors as well.
 
-##### The LOINC Mapping Validator Library
+#### The LOINC Mapping Validator Library
 At the core of this package is the LOINC mapping library. To use the library:
 
-const validator = require('@lhncbc/loinc-mapping-validator').validator;
+const validator = require('loinc-mapping-validator').validator;
 The validator exposes the following elements:
 - validator.validateLoincUnit() is the function that you can call to validate a given 
   (LOINC number, unit) to see if they go together.  
@@ -36,12 +36,13 @@ The validator exposes the following elements:
     - UNKNOWN: Unit information not available for the LOINC number
     - MISSING_LOINC: The LOINC number is not provided
 
-##### The Command-line Tool
+#### The Command-line Tool
 There is a command line tool that comes with this package, which you can use to
 batch validate records in a CSV input file, and output a new CSV file that contains
 all the input columns plus a few new columns that indicate the validation status
 for each record.
 
+##### How to use the command line tool
 To use the command line tool, you will need to work with Windows command terminals or
 Linux terminals.
 - Install Node.js on your system
