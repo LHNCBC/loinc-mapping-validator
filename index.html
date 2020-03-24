@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LHC-Forms</title>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-59GQ6JK');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700"
+          rel="stylesheet" type="text/css">
+    <script>
+      function turnRed() {
+        var stuffDiv = document.getElementById('stuffId');
+        stuffDiv.style.color = "red";
+      }
+    </script>
+  </head>
+
+  <!-- TODO: onload init instance, as ucum-lhc? -->
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59GQ6JK" height="0" width="0" style="display:none;visibility:hidden" title="googletagmanager"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!--[if lt IE 9]>
+    <p class=alert><b>Note:</b> It appears you are using an unsupported
+     version of the IE browser. This website will not work properly with
+     IE 8 or below.</p>
+    <![endif]-->
+
+    <!-- page header -->
+    <div id="header">
+      <a href="http://lhncbc.nlm.nih.gov" title="Lister Hill Center" id="logo">
+        <img src="lhncbc.jpg" alt="Lister Hill Center" />
+      </a>
+      <div id="siteNameBox">
+        <span id=siteName>LOINC Mapping Validator</span><br>
+        <!-- don't feel it's necessary to use a tagline here, but if needed, uncomment and change.
+        <span id=tagline>TBD</span>
+        -->
+      </div>
+    </div>
+    <!-- end page header -->
+
+    <ul class="nav-links horz-list">
+      <li><a href="https://lhncbc.nlm.nih.gov/project/lhc-forms" target="_blank">LHC-Forms Project</a></li>
+      <li><a href="https://lhcforms.nlm.nih.gov" target="_blank">LHC-Forms Demo</a></li>
+      <li><a href="https://lhcformbuilder.nlm.nih.gov" target="_blank">Form Builder</a></li>
+      <li><a href="https://clinicaltables.nlm.nih.gov"
+             target="_blank">Clinical Table Search Service</a></li>
+      <li><a id="sdcPageLink" href="https://lhcforms.nlm.nih.gov/sdc">FHIR SDC SMART App</a></li>
+      <li class="last-item"><a id="fhirLink" class=current href="https://lhcforms.nlm.nih.gov/fhir">FHIR Tools</a></li>
+    </ul>
+
+    <div class="page-content">
+      <h2 style="text-align: center">The LOINC Mapping Validator</h2>
+      <div class="summary">
+        This web-based LOINC mapping validation tool uses the
+        <a href="https://github.com/lhncbc/loinc-mapping-validator">LOINC Mapping Validator library</a>
+        to check whether the LOINC mappings for the records in a given CSV file are appropriate.
+        Currently the validator only considers the unit of a record. It works best if the units used
+        are UCUM units and can only recognize a limited number of non-UCUM units. This validator may
+        be improved down the road to support more non-UCUM units and to take into account the values as
+        well as some other factors during validation.
+      </div>
+      <div id="show-more-less">
+        <div class="summary">
+          With this tool, a CSV file of LOINC mappings may be uploaded, processed, and the result file
+          may be saved to your computer. Your file will be processed in the browser on your computer and
+          will not be sent to or stored on any server.
+          The result file will contain all the columns in the original input file plus 5 new
+          columns to indicate the validation results. For more details on the result file, including the
+          interpretation of the results, please see
+          <a href="https://github.com/lhncbc/loinc-mapping-validator/blob/master/README.md#output-file-format">
+              output file format
+          </a>.
+        </div>
+        <div class="summary">
+          There are different flavors of CSV formats. There is no guarantee that this tool will work with all of them,
+          but the csv file saved from Microsoft excel should work. In order to use this validator:
+          <ul>
+            <li>The input file must be in CSV format and must have unqiue column names</li>
+            <li>There must be a column for the LOINC number and a column for the unit</li>
+          </ul>
+        </div>
+      </div>
+      <a style="text-decoration: underline;"  href="javascript:void(0);"
+         onclick="app.showMoreOrLess(this, 'show-more-less');">Show more...</a>
+
+      <h3>Batch Validation of LOINC Mappings in CSV Files</h3> <hr/>
+      <div class="content-block">
+        <p>
+          Please select the file to validate, fill out the LOINC number column name and the unit column name" fields below, and
+          then click "Upload & Validate" to upload and process the file.
+        </p>
+        <table class="input">
+          <tr>
+            <td class="input-label">CSV File to Upload:</td>
+            <td><input type="file" id="inputFile"/></td>
+          </tr>
+          <tr>
+            <td class="input-label">What is the column name for the LOINC number?</td>
+            <td><input type="text" id="loincCol" placeholder = "LOINC Column Name"/></td>
+          </tr>
+          <tr>
+            <td class="input-label">What is the column name for the UCUM unit?</td>
+            <td><input type="text" id="unitCol" placeholder = "Unit Column Name"/></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><button id="uploadAndValidate" onclick="app.uploadAndValidate(); return true;"
+                ><b>Upload & Validate</b></button></td>
+          </tr>
+        </table>
+        <p style="margin-top: 10px">
+          It may take a while. When it finishes, depending on your browser's configuration, it will either ask you to
+          specify where to save the result file, or directly save to your browser's pre-configured save location.
+          For details on the result file format, please see
+          <a href="https://github.com/lhncbc/loinc-mapping-validator/blob/master/README.md#output-file-format">
+              output file format
+          </a>
+        </p>
+      </div>
+      <h3>Other Ways to Use the LOINC Mapping Validator</h3> <hr/>
+      <ul>
+        <li>Download <a href="https://github.com/lhncbc/loinc-mapping-validator">the LOINC Mapping Validator library</a>
+          and use the command line batch-validation tool that comes with it
+        </li>
+        <li>Write your own program using
+          <a href="https://github.com/lhncbc/loinc-mapping-validator">the LOINC Mapping Validator library</a>
+        </li>
+      </ul>
+    </div>
+    <!-- page footer -->
+    <div id="fine-print">
+      <ul class="horz-list">
+        <li><a title="NLM copyright information"
+               href="http://www.nlm.nih.gov/copyright.html">Copyright</a>
+        </li>
+        <li><a title="NLM privacy policy"
+               href="http://www.nlm.nih.gov/privacy.html">Privacy</a>
+        </li>
+        <li><a title="NLM accessibility"
+               href="http://www.nlm.nih.gov/accessibility.html">
+                    Accessibility</a>
+        </li>
+        <li><a title="NLM viewers and players"
+               href="http://www.nlm.nih.gov/plugins.html">Viewers & Players</a>
+        </li>
+        <li><a title="NIH Freedom of Information Act office"
+               href="http://www.nih.gov/icd/od/foia/index.htm">
+                    Freedom of Information Act</a>
+        </li>
+        <li class="last-item"><a title="Contact Us"
+                                 href="https://lhncbc.nlm.nih.gov/contact-us">
+          Contact Us</a>
+        </li>
+      </ul>
+      <ul class="horz-list">
+        <li><a title="U.S. National Library of Medicine"
+               href="http://www.nlm.nih.gov/">U.S. National Library of
+                    Medicine</a>
+        </li>
+        <li><a title="U.S. National Institutes of Health"
+               href="http://www.nih.gov/">U.S. National Institutes of Health</a>
+        </li>
+        <li><a title="U.S. Department of Health and Human Services"
+               href="http://www.hhs.gov/">U.S. Department of Health and Human
+                    Services</a>
+        </li>
+        <li class="last-item"><a title="USA.gov" href="http://www.usa.gov/"><img
+              src="USAgov.gif" alt="USA.gov"
+              id="usagov"></a>
+        </li>
+      </ul>
+    </div><!-- fine-print -->
+    <!-- end page footer -->
+
+<!--
+    <script src="https://lforms-service.nlm.nih.gov/autocomplete-lhc-versions/16.0.1/autocomplete-lhc_jQuery.min.js"></script>
+    <script src="browser-dist/ucum-lhc.min.js"></script>
+    <script src="demo-dist/ucum-demo.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+-->
+  </body>
+</html>
