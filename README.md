@@ -6,6 +6,15 @@ Please see the <a href="https://lhcforms.nlm.nih.gov/fhir/loinc-mapping-validato
 
 #### Build/host the web validator on your own system
 
+**Important note:**  
+If you plan to build and host this web-based validator in a public 
+accessible fashion or otherwise accessible by a larger number of users, 
+care should be taken to customize the headers and footers so that it is
+clear that it is not a website of the U.S. National Library of Medicine.
+We'd appreciate it if you could credit us as "based on the open source
+project from the U.S. National Library of Medicine".
+
+**Steps to build/host the validator:**  
 It's very simple to build and host the web-based validator on your own system, just
 follow the following steps:
 - Install Node.js on your system if not already
