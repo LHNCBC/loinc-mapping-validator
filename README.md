@@ -6,7 +6,8 @@ might be expanded to consider the values and potentially other factors as well.
 
 This package comes with a library and a command line tool. There is also a
 <a href="https://lhcforms.nlm.nih.gov/fhir/loinc-mapping-validator/index.html">web-based
-LOINC mapping validator </a> that is backed by this library.
+LOINC mapping validator</a> that is backed by this library and lives in the "gh-pages"
+branch of this package.
 
 
 #### The LOINC Mapping Validator Library
