@@ -4,7 +4,6 @@ import './USAgov.gif';
 import './lhncbc.jpg';
 
 var path = require('path');
-var stream = require('stream');
 var csvParse = require('csv-parse');
 var transform = require('stream-transform');
 var csvStringify = require('csv-stringify');
@@ -15,6 +14,7 @@ var getInputFileEle = () => document.getElementById("inputFile");
 
 // new columns added to the result file - see README.md for more detils on these fields.
 var newColumns = [ 'LMV_UNIT_STATUS', 'LMV_SUBSTITUTED_UNIT', 'LMV_LOINC_STATUS', 'LMV_UNIT_NOTE', 'LMV_LOINC_NOTE'];
+
 
 /**
  * Show more/less of the description section in the first half of the page.
@@ -50,14 +50,13 @@ export function uploadAndValidate() {
   var reader = new FileReader();
   var parser = csvParse({columns: true});
   var stringifier = setupStringifier(inputFileObj.name);
-  var transformer = transform((record) => validateRecord(record, loincColName, unitColName));
+  var transformer = transform((record) => validateRecord(record, loincColName.trim(), unitColName.trim()));
 
   reader.onload = function(event) {
-    // console.log(loincColName + '-' + unitColName + '\n' + event.target.result);
     str2stream(event.target.result)
-    .pipe(parser).on('error', (err) => { errHandler('csv file parsing', err); })
-    .pipe(transformer).on('error', (err) => { errHandler('data processing', err); })
-    .pipe(stringifier).on('error', (err) => { errHandler('results formatting', err); });
+    .pipe(parser).on('error', (err) => { errHandler(err); })
+    .pipe(transformer).on('error', (err) => { errHandler(err); })
+    .pipe(stringifier).on('error', (err) => { errHandler(err); });
   };
 
   reader.readAsText(inputFileObj);
@@ -81,7 +80,7 @@ function setupStringifier(inputFileName) {
     }
   });
 
-  stringifier.on('error', (err) => { errHandler('CSV results formatting. Rows processed: ' + data.length, err); });
+  stringifier.on('error', (err) => { errHandler(err); });
 
   stringifier.on('finish', function() {
     data = data.join('');
@@ -120,20 +119,15 @@ function initiateDownload(defaultFileName, objectUrl) {
   // cleanup
   getUrlFactory().revokeObjectURL(objectUrl);
   downloadLink.parentElement.removeChild(downloadLink);
-  getInputFileEle().value = '';
 }
 
 
 /**
  * Just display the given error message or error.
  * @param err an error message string or error object, should not be empty
- * @param contextKey optional, a string/key indicating where the error occurred.
  */
-function errHandler(err, contextKey) {
+function errHandler(err) {
   var errMsg = err? (typeof err === 'string'? err: err.message): "Unknown error";
-  if(contextKey) {
-    errMsg = 'Error occurred during ' + contextKey + ': ' + errMsg;
-  }
   alert(errMsg);
   console.log(errMsg);
 }
@@ -148,7 +142,12 @@ function errHandler(err, contextKey) {
 function validateRecord(record, loincCol, unitCol) {
   // console.log(record);
   if(! record.hasOwnProperty(loincCol) || ! record.hasOwnProperty(unitCol)) {
-    throw new Error('record missing loinc and/or unit column:', JSON.stringify(record, null, 4));
+    var missing = record.hasOwnProperty(loincCol)? unitCol:
+      record.hasOwnProperty(unitCol)? loincCol: loincCol + ' and ' + unitCol;
+    var msg = 'You specified "' +  loincCol + '" as the LOINC number column, "' + unitCol +
+      '" as the unit column, but the record does not have ' + missing + ':\n' +
+      JSON.stringify(record, null, 4);
+    throw new Error(msg);
   }
   if(record[loincCol] && record[unitCol]) {
     let result = validator.validateLoincUnit(record[loincCol], record[unitCol]);

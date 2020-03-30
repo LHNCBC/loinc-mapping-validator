@@ -1,6 +1,5 @@
 'use strict';
 
-// Save original config to restore after the tests.
 var fs = require('fs');
 var path = require('path');
 var csv = require('csv');
@@ -10,22 +9,24 @@ var outputDir = require('./outputPath');
 var outputFile = path.join(outputDir, 'sample-test-file-results.csv');
 
 
-// Prepare the output directory for sue as result file download destination
-if(fs.existsSync(outputDir)) { // Cleanup possible left-overs from previous rounds if things failed
-  fs.readdirSync(outputDir).forEach(function (file) {
-    if(file.match(/^sample-test-file-results.*\.csv$/)) {
-      fs.unlinkSync(path.join(outputDir, file));
-    }
-  });
-}
-else {
-  fs.mkdirSync(outputDir);
-}
-
-
 // Upload the test data file, process it, and save (download) it to
 // to the default location as configured in protractor.confjs
 describe('LOINC Mapping Validator', function() {
+  beforeAll(function(done) {
+    // Prepare the output directory for sue as result file download destination
+    if(fs.existsSync(outputDir)) { // Cleanup possible left-overs from previous rounds if things failed
+      fs.readdirSync(outputDir).forEach(function (file) {
+        if(file.match(/^sample-test-file-results.*\.csv$/)) {
+          fs.unlinkSync(path.join(outputDir, file));
+        }
+      });
+    }
+    else {
+      fs.mkdirSync(outputDir);
+    }
+    done();
+  });
+
   it('should upload a file, process it, and save the results', function(done) {
     setAngularSite(false);
     browser.get('/');

@@ -44,7 +44,7 @@ table.input {
 table.input td {
   padding: 0.5em;
 }
-td.input-label {
+th.input-label {
   text-align: right;
 }
 input {
