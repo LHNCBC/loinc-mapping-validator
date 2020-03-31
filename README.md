@@ -5,7 +5,7 @@ are correct. Currently it only considers the unit of a record but down the road 
 might be expanded to consider the values and potentially other factors as well.
 
 This package comes with a library and a command line tool. There is also a
-<a href="https://lhcforms.nlm.nih.gov/fhir/loinc-mapping-validator/index.html">web-based
+<a href="https://lhcforms.nlm.nih.gov/fhir/loinc-mapping-validator/">web-based
 LOINC mapping validator</a> that is backed by this library and lives in the "gh-pages"
 branch of this package.
 
