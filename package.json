@@ -4,7 +4,7 @@
   "description": "A web-based tool for checking whether a LOINC mapping is appropriate",
   "main": "loinc-validator.js",
   "scripts": {
-    "test": "webpack-dev-server & npm run update-webdriver && protractor test/e2e/protractor.conf.js; kill %1",
+    "test": "webpack-dev-server & sleep 1; npm run update-webdriver && protractor test/e2e/protractor.conf.js; s=$?; kill %1; exit $s",
     "build": "webpack",
     "start": "webpack-dev-server --open",
     "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update --versions.chrome $(google-chrome --version |awk '{print $NF}')"
