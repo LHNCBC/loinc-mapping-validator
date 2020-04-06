@@ -1,14 +1,17 @@
 {
   "name": "loinc-mapping-validator",
-  "version": "0.0.2",
-  "description": "Checks whether UCUM code is appropriate for a given LOINC code.",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "A web-based tool for checking whether a LOINC mapping is appropriate",
+  "main": "loinc-validator.js",
   "scripts": {
-    "test": "mocha"
+    "test": "webpack-dev-server & sleep 1; npm run update-webdriver && protractor test/e2e/protractor.conf.js; s=$?; kill %1; exit $s",
+    "build": "webpack",
+    "start": "webpack-dev-server --open",
+    "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update --versions.chrome $(google-chrome --version |awk '{print $NF}')"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lhncbc/loinc-mapping-validator"
+    "url": "ssh://git@lhc-reports.nlm.nih.gov:lforms/loinc-mapping-validator.git"
   },
   "keywords": [
     "UCUM",
@@ -18,11 +21,28 @@
   "author": "U.S. National Library of Medicine",
   "license": "SEE LICENSE IN LICENSE.MD.",
   "dependencies": {
-    "@lhncbc/ucum-lhc": "^3.0.0",
     "commander": "^4.1.0",
-    "csv": "^5.3.1"
+    "csv": "^5.3.1",
+    "loinc-mapping-validator": "0.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.1.0",
+    "extract-loader": "^3.1.0",
+    "file-loader": "^4.1.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "jasmine-spec-reporter": "^4.2.1",
+    "mini-css-extract-plugin": "^0.8.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "protractor": "^5.4.2",
+    "terser-webpack-plugin": "^1.3.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2",
     "mocha": "^7.0.0"
   }
 }
