@@ -3,6 +3,10 @@
 This log documents the significant changes for each release.
 This project follows [Semantic Versioning](http://semver.org/).
 
+## [0.0.3] - 2020-03-27
+### Changed
+- Added a link to the web-based LOINC mapping validator.
+
 ## [0.0.2] - 2020-03-03
 ### Added
 - An anchor for the output file format so that it may be referenced externallly.
