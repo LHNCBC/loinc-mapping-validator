@@ -1,7 +1,7 @@
 // Imports for webpack to find assets
 import './app.css';
 import './USAgov.gif';
-import './lhncbc.jpg';
+import './LHNCBC_white.svg';
 
 var path = require('path');
 var csvParse = require('csv-parse');
