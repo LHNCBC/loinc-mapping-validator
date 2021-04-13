@@ -79,10 +79,10 @@ input {
 }
 #site-logo img {
   float: left;
-  margin-right: 10px;
-  margin-left: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
   border-right: 1px solid #0BACB6;
-  padding-right: 0.75em;
+  padding-right: 5px;
 }
 #siteNameBox {
   margin-top: 1.5em;
