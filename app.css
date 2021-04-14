@@ -63,18 +63,19 @@ input {
   position: relative;
   font-size: 12px;
   font-family: 'Droid Sans',Arial,Helvetica,sans-serif;
+  font-display: swap;
   color: #202020;
   border-top: 2px solid #0BACB6;
   border-bottom: 7px solid #17b4e3;
   line-height: normal;
-  padding-bottom: 25px;
+  padding-bottom: 24px;
 }
 #site-logo {
   position: relative;
-  margin-top: 2px;
+  margin-top: 4px;
   font-size: 18px;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   display: block;
 }
 #site-logo img {
@@ -85,7 +86,7 @@ input {
   padding-right: 5px;
 }
 #siteNameBox {
-  margin-top: 1.5em;
+  margin-top: 2.2em;
   margin-left: 5px;
 }
 #siteName {
@@ -96,14 +97,14 @@ input {
 /* Start styles for NIH/NLM/LHC logo */
 #lhc-logo {
   background-color: #0BACB6;
-  padding-top: 3px;
+  padding-top: 4px;
   padding-left:5px;
   overflow:hidden;
 }
 #lhc-logo img {
   height: 35px;
   width: auto;
-  margin-bottom: -4px
+  margin-bottom: -3px
 }
 
 /* Styles for the navigation links */
