@@ -1,7 +1,5 @@
 // Imports for webpack to find assets
 import './app.css';
-import './USAgov.gif';
-import './LHNCBC_white.svg';
 import './lhncbc.jpg';
 
 var path = require('path');
