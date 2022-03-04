@@ -3,6 +3,10 @@
 This log documents the significant changes for each release.
 This project follows [Semantic Versioning](http://semver.org/).
 
+## [0.0.5] - 2022-03-04
+### Fixed
+- package version issue of sending unwanted requests.
+
 ## [0.0.4] - 2022-02-28
 ### Changed
 - Load shared header/footer from CTSS.
