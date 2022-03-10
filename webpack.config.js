@@ -83,6 +83,7 @@ module.exports = {
     //host: 'localhost',
     port: port,
     writeToDisk: true, // write generated asset files
-    public: shortHostname+':'+port
+    public: shortHostname+':'+port,
+    inline: false
   }
 }
