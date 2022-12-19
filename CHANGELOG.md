@@ -5,7 +5,7 @@ This project follows [Semantic Versioning](http://semver.org/).
 
 ## [0.0.3-gh-pages.1] - 2022-12-19
 ### Changed
- - Updated loinc-mapping-validator version to use.
+ - Updated loinc-mapping-validator version to 0.0.3
  - Updated the version scheme for the gh-pages to be based on the library version:
    LIB_VERSION-gh-pages-SERIAL_NUMBER, e.g., 0.0.3-gh-pages.1
 
