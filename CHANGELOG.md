@@ -3,6 +3,10 @@
 This log documents the significant changes for each release.
 This project follows [Semantic Versioning](http://semver.org/).
 
+## [0.0.7] - 2022-12-19
+### Changed
+ - Updated loinc-mapping-validator version to use.
+
 ## [0.0.6] - 2022-12-13
 ### Changed
  - Updated website header and footer and logo.

@@ -1,6 +1,6 @@
 {
   "name": "loinc-mapping-validator",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A web-based tool for checking whether a LOINC mapping is appropriate",
   "main": "loinc-validator.js",
   "scripts": {
@@ -23,7 +23,7 @@
   "dependencies": {
     "commander": "^4.1.0",
     "csv": "^5.3.1",
-    "loinc-mapping-validator": "0.0.2"
+    "loinc-mapping-validator": "^0.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
