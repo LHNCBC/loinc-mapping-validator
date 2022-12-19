@@ -63,9 +63,8 @@ input {
   position: relative;
   font-size: 12px;
   font-family: 'Droid Sans',Arial,Helvetica,sans-serif;
-  font-display: swap;
   color: #202020;
-  border-top: 2px solid #0BACB6;
+  border-top: 2px solid transparent;
   border-bottom: 7px solid #17b4e3;
   line-height: normal;
   padding-bottom: 24px;
@@ -76,7 +75,6 @@ input {
   font-size: 18px;
   display: block;
   margin-bottom: 8px;
-  display: block;
 }
 #site-logo img {
   float: left;
@@ -84,9 +82,11 @@ input {
   margin-left: 5px;
   border-right: 1px solid #0BACB6;
   padding-right: 5px;
+  height: 81px;
+  width: 81px;
 }
 #siteNameBox {
-  margin-top: 2.2em;
+  margin-top: 25px;
   margin-left: 5px;
 }
 #siteName {
