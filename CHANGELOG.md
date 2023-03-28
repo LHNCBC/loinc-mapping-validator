@@ -3,6 +3,10 @@
 This log documents the significant changes for each release.
 This project follows [Semantic Versioning](http://semver.org/).
 
+## [0.0.4] - 2023-03-28
+### Changed
+- Updated NodeJS to version 18.14.2
+
 ## [0.0.3] - 2020-03-27
 ### Changed
 - Added a link to the web-based LOINC mapping validator.
