@@ -3,6 +3,10 @@
 This log documents the significant changes for each release.
 This project follows [Semantic Versioning](http://semver.org/).
 
+## [0.0.3-gh-pages.2] - 2023-03-28
+### Changed
+- Upgraded NodeJS to version 18.14.2
+
 ## [0.0.3-gh-pages.1] - 2022-12-19
 ### Changed
  - Updated loinc-mapping-validator version to 0.0.3

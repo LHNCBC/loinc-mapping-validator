@@ -3,10 +3,10 @@ import './app.css';
 import './projectLogo.svg';
 
 var path = require('path');
-var csvParse = require('csv-parse');
-var transform = require('stream-transform');
-var csvStringify = require('csv-stringify');
-var str2stream = require('string-to-stream') ;
+var csvParse = require('csv-parse').parse;
+var transform = require('stream-transform').transform;
+var csvStringify = require('csv-stringify').stringify;
+var str2stream = require('string-to-stream');
 var validator = require('loinc-mapping-validator').validator;
 var getUrlFactory = () => (window.URL || window.webkitURL);
 var getInputFileEle = () => document.getElementById("inputFile");

@@ -2,7 +2,7 @@
 
 var fs = require('fs');
 var path = require('path');
-var csv = require('csv');
+var csvParse = require('csv-parse').parse;
 var EC = protractor.ExpectedConditions;
 var inputFile = path.resolve(__dirname, '../data/sample-test-file.csv');
 var outputDir = require('./outputPath');
@@ -62,7 +62,7 @@ describe('LOINC Mapping Validator', function() {
  */
 function readCSV(csvFile) {
   let recList = [];
-  let parser = csv.parse({columns: true});
+  let parser = csvParse.parse({columns: true});
 
   parser.on('readable', function() {
     let record;

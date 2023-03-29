@@ -5,7 +5,10 @@
 # customizations.
 #     You may set variables before sourcing this to change execution
 # of it.
-NODE_DIR=node-v10.14.1-linux-x64
+# NODE_DIR=node-v10.14.1-linux-x64
+NODE_DIR=node-v18.14.2
+export npm_config_legacy_peer_deps=true
+
 # Set path
 PATH=~/${NODE_DIR}/bin:/bin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/etc
 
