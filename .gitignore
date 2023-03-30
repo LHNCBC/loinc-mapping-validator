@@ -1,7 +1,3 @@
 .idea
 node_modules
 public
-test/output
-test/cypress/screenshots/*
-test/cypress/videos/*
-test/cypress/downloads/*
