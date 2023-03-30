@@ -4,9 +4,8 @@
   "description": "A web-based tool for checking whether a LOINC mapping is appropriate",
   "main": "app.js",
   "scripts": {
-    "test": "webpack-dev-server & sleep 1; npm run update-webdriver && protractor test/e2e/protractor.conf.js; s=$?; kill %1; exit $s",
+    "test": "source ./bashrc && cypress run",
     "build": "webpack",
-    "build:webpack:cjs": "webpack --config ./cjs/webpack.config.js",
     "start": "webpack serve",
     "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update --versions.chrome $(google-chrome --version |awk '{print $NF}')"
   },
@@ -44,10 +43,10 @@
     "mocha": "^10.2.0",
     "node-stdlib-browser": "^1.2.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "protractor": "^5.4.2",
     "terser-webpack-plugin": "^5.3.7",
     "webpack": "^5.76.3",
     "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.13.1"
+    "webpack-dev-server": "^4.13.1",
+    "cypress": "^10.4.0"
   }
 }
