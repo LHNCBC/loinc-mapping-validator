@@ -11,7 +11,6 @@ PATH=~/${NODE_DIR}/bin:/bin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/etc
 script_dir=`dirname ${BASH_SOURCE}`
 npm_bin=`readlink -f $script_dir/node_modules/.bin`
 PATH=$PATH:$npm_bin
-export npm_config_legacy_peer_deps=true
 
 # Set node in development mode
 unset NODE_ENV
