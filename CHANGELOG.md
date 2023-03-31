@@ -3,9 +3,11 @@
 This log documents the significant changes for each release.
 This project follows [Semantic Versioning](http://semver.org/).
 
-## [0.0.3-gh-pages.2] - 2023-03-28
+## [0.0.3-gh-pages.2] - 2023-03-30
 ### Changed
 - Upgraded NodeJS to version 18.14.2
+- Migrated e2e tests to cypress
+- Updated some third party packages and fixed incompatibilities.
 
 ## [0.0.3-gh-pages.1] - 2022-12-19
 ### Changed
