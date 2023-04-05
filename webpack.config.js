@@ -6,9 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const webpack = require('webpack');
 const stdLibBrowser = require('node-stdlib-browser');
-const {
-  NodeProtocolUrlPlugin
-} = require('node-stdlib-browser/helpers/webpack/plugin');
 
 /**
  *  Returns the hostname without the domain name.
@@ -44,7 +41,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'app.[contenthash].css',
     }),
-    new NodeProtocolUrlPlugin(),
     new webpack.ProvidePlugin({
       process: stdLibBrowser.process,
       Buffer: [stdLibBrowser.buffer, 'Buffer'],

@@ -1,6 +1,6 @@
 {
   "name": "loinc-mapping-validator",
-  "version": "0.0.3-gh-pages.2",
+  "version": "0.0.4-gh-pages.1",
   "description": "A web-based tool for checking whether a LOINC mapping is appropriate",
   "main": "app.js",
   "scripts": {
@@ -23,7 +23,8 @@
   "dependencies": {
     "commander": "^4.1.0",
     "csv": "^6.2.8",
-    "loinc-mapping-validator": "^0.0.3"
+    "loinc-mapping-validator": "^0.0.4",
+    "string-to-stream": "^3.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",
@@ -32,6 +33,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^4.2.2",
+    "cypress": "^10.4.0",
     "extract-loader": "^3.1.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
@@ -39,11 +41,10 @@
     "mini-css-extract-plugin": "^2.7.5",
     "mocha": "^10.2.0",
     "node-stdlib-browser": "^1.2.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "optimize-css-assets-webpack-plugin": "^6.0.1",
     "terser-webpack-plugin": "^5.3.7",
-    "webpack": "^5.76.3",
+    "webpack": "^5.77.0",
     "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.13.1",
-    "cypress": "^10.4.0"
+    "webpack-dev-server": "^4.13.1"
   }
 }
