@@ -1,13 +1,12 @@
 {
   "name": "loinc-mapping-validator",
-  "version": "0.0.3-gh-pages.1",
+  "version": "0.0.4-gh-pages.1",
   "description": "A web-based tool for checking whether a LOINC mapping is appropriate",
-  "main": "loinc-validator.js",
+  "main": "app.js",
   "scripts": {
-    "test": "webpack-dev-server & sleep 1; npm run update-webdriver && protractor test/e2e/protractor.conf.js; s=$?; kill %1; exit $s",
+    "test": "source ./bashrc && cypress run",
     "build": "webpack",
-    "start": "webpack-dev-server --open",
-    "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update --versions.chrome $(google-chrome --version |awk '{print $NF}')"
+    "start": "webpack serve"
   },
   "repository": {
     "type": "git",
@@ -22,27 +21,28 @@
   "license": "SEE LICENSE IN LICENSE.MD.",
   "dependencies": {
     "commander": "^4.1.0",
-    "csv": "^5.3.1",
-    "loinc-mapping-validator": "^0.0.3"
+    "csv": "^6.2.8",
+    "loinc-mapping-validator": "^0.0.4",
+    "string-to-stream": "^3.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
-    "babel-loader": "^8.0.6",
-    "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^3.1.0",
+    "@babel/core": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.3",
+    "css-minimizer-webpack-plugin": "^4.2.2",
+    "cypress": "^10.4.0",
     "extract-loader": "^3.1.0",
-    "file-loader": "^4.1.0",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "jasmine-spec-reporter": "^4.2.1",
-    "mini-css-extract-plugin": "^0.8.0",
-    "mocha": "^7.0.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "protractor": "^5.4.2",
-    "terser-webpack-plugin": "^1.3.0",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.11.2"
+    "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "jasmine-spec-reporter": "^7.0.0",
+    "mini-css-extract-plugin": "^2.7.5",
+    "mocha": "^10.2.0",
+    "node-stdlib-browser": "^1.2.0",
+    "terser-webpack-plugin": "^5.3.7",
+    "webpack": "^5.77.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.1"
   }
 }
