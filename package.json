@@ -6,7 +6,7 @@
   "scripts": {
     "test": "source ./bashrc && cypress run",
     "build": "webpack",
-    "start": "webpack serve",
+    "start": "webpack serve"
   },
   "repository": {
     "type": "git",
