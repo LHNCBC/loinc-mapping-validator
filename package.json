@@ -7,7 +7,6 @@
     "test": "source ./bashrc && cypress run",
     "build": "webpack",
     "start": "webpack serve",
-    "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update --versions.chrome $(google-chrome --version |awk '{print $NF}')"
   },
   "repository": {
     "type": "git",
