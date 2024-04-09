@@ -93,3 +93,12 @@ input {
   font-size: 300%;
 }
 /* End of styles for the header */
+
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+a:focus, a:hover {
+  text-decoration: underline;
+  color: rgb(51, 51, 51);
+}
