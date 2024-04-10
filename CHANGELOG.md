@@ -3,6 +3,10 @@
 This log documents the significant changes for each release.
 This project follows [Semantic Versioning](http://semver.org/).
 
+## [0.0.4-gh-pages.3] - 2024-04-01
+### Changed
+- Use shared navigation links from lforms-app.
+
 ## [0.0.3-gh-pages.2] - 2023-03-30
 ### Changed
 - Upgraded NodeJS to version 18.14.2
