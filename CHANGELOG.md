@@ -3,6 +3,11 @@
 This log documents the significant changes for each release.
 This project follows [Semantic Versioning](http://semver.org/).
 
+## [0.0.5] - 2025-02-19
+### Changed
+- Updated NodeJS to version 22.11.0
+- Addressed the vulnerabilities reported by npm audit.
+
 ## [0.0.4] - 2023-03-28
 ### Changed
 - Updated NodeJS to version 18.14.2
