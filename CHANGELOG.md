@@ -3,6 +3,11 @@
 This log documents the significant changes for each release.
 This project follows [Semantic Versioning](http://semver.org/).
 
+## [0.0.5-gh-pages.0] - 2025-02-24
+### Changed
+- Updated NodeJS to version 22.11.0
+- Addressed the vulnerabilities reported by npm audit.
+
 ## [0.0.4-gh-pages.4] - 2024-04-11
 ### Fixed
 - loadSharedNavLinks.js link from lforms-app.
