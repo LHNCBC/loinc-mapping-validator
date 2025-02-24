@@ -1,6 +1,6 @@
 {
   "name": "loinc-mapping-validator",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Checks whether UCUM code is appropriate for a given LOINC code.",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
   "author": "U.S. National Library of Medicine",
   "license": "SEE LICENSE IN LICENSE.MD.",
   "dependencies": {
-    "@lhncbc/ucum-lhc": "^3.0.0",
+    "@lhncbc/ucum-lhc": "^7.1.2",
     "commander": "^4.1.0",
     "csv": "^5.3.1"
   },
