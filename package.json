@@ -1,6 +1,6 @@
 {
   "name": "loinc-mapping-validator",
-  "version": "0.0.4-gh-pages.4",
+  "version": "0.0.5-gh-pages.0",
   "description": "A web-based tool for checking whether a LOINC mapping is appropriate",
   "main": "app.js",
   "scripts": {
