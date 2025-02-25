@@ -3,6 +3,10 @@
 This log documents the significant changes for each release.
 This project follows [Semantic Versioning](http://semver.org/).
 
+## [0.0.5-gh-pages.1] - 2025-02-25
+### Changed
+- Updated to use loinc-mapping-validator 0.0.5
+
 ## [0.0.5-gh-pages.0] - 2025-02-24
 ### Changed
 - Updated NodeJS to version 22.11.0
