@@ -44,3 +44,21 @@ describe('Test LOINC units validation', function() {
     }
   });
 });
+
+
+// Substitutions whose UCUM value did not match the unit spelled in the key.
+var substitutionData = [
+  { loinc: '8310-5', unit: 'def F', substituted_unit: '[degF]' },   // misspelling of deg F, not of deg C
+  { loinc: '21218-3', unit: 'CH 100 U', substituted_unit: "{CH100'U}" },  // as for CH 50 U, no volume in the key
+  { loinc: '11253-4', unit: 'Fraction', substituted_unit: '{fraction}' }
+];
+
+describe('Test non-UCUM unit substitutions', function() {
+  it("should substitute the unit named in the key", function() {
+    for(var entry of substitutionData) {
+      var result = validator.validateLoincUnit(entry.loinc, entry.unit);
+      assert.equal(UnitStatus.INVALID_FIXED, result.unitStatus);
+      assert.equal(entry.substituted_unit, result.substituted_unit);
+    }
+  });
+});
