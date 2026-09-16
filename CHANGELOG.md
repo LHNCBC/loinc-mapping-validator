@@ -9,6 +9,8 @@ This project follows [Semantic Versioning](http://semver.org/).
   contributor's PR (details see commit history)
 ### Changed
 - Updated mocha to 11.8.0
+- Improved the build to allow pretty-printed json in the repo
+  but shipping a compacted version.
 
 ## [0.0.5] - 2025-02-19
 ### Changed

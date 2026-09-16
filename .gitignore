@@ -1,4 +1,5 @@
 .idea
 data-stuff
+dist
 node_modules
 public

@@ -4,7 +4,10 @@
   "description": "Checks whether UCUM code is appropriate for a given LOINC code.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "node bin/buildPackage.js",
+    "release": "npm test && npm run build && npm publish ./dist",
+    "prepublishOnly": "node bin/noDirectPublish.js"
   },
   "repository": {
     "type": "git",
