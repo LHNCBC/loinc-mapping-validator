@@ -3,6 +3,15 @@
 This log documents the significant changes for each release.
 This project follows [Semantic Versioning](http://semver.org/).
 
+## [0.0.6] - 2026-09-16
+### Fixed
+- Fixed data errors in the unit-to-ucum mapping file based on a
+  contributor's PR (details see commit history)
+### Changed
+- Updated mocha to 11.8.0
+- Improved the build to allow pretty-printed json in the repo
+  but shipping a compacted version.
+
 ## [0.0.5] - 2025-02-19
 ### Changed
 - Updated NodeJS to version 22.11.0

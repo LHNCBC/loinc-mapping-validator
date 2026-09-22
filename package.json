@@ -1,10 +1,13 @@
 {
   "name": "loinc-mapping-validator",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Checks whether UCUM code is appropriate for a given LOINC code.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "node bin/buildPackage.js",
+    "release": "npm test && npm run build && npm publish ./dist",
+    "prepublishOnly": "node bin/noDirectPublish.js"
   },
   "repository": {
     "type": "git",
@@ -16,13 +19,16 @@
     "Validation"
   ],
   "author": "U.S. National Library of Medicine",
-  "license": "SEE LICENSE IN LICENSE.MD.",
+  "license": "SEE LICENSE IN LICENSE.md",
   "dependencies": {
     "@lhncbc/ucum-lhc": "^7.1.2",
     "commander": "^4.1.0",
     "csv": "^5.3.1"
   },
+  "engines": {
+    "node": ">=22.11.0"
+  },
   "devDependencies": {
-    "mocha": "^10.2.0"
+    "mocha": "^11.8.0"
   }
 }
